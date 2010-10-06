@@ -84,9 +84,10 @@ module StatefulLink
     #    :chosen => "<li class='chosen'>#{link_to(...)}</li>"
     #  )
     #
-    def stateful_link_to(active, *args)
+    def stateful_link_to(*args)
       options = args.extract_options!
-      chosen = args.first
+      active = args.first
+      chosen = args.second
       state = options[:state] || proc { action_state(active, chosen) }
       raise ArgumentError, ":state should be proc" unless state.is_a?(Proc)
       state = instance_exec(&state)

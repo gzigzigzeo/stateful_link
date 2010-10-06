@@ -39,5 +39,12 @@ describe StatefulLink::Helper do
       :inactive => "2",
       :chosen => proc { root_path }
     ).should == root_path
+    
+    helper.stateful_link_to(
+      :active => "1",
+      :inactive => "2",
+      :chosen => "3",
+      :state => proc { :active }
+    ).should == "1"
   end
 end
