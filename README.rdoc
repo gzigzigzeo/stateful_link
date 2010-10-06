@@ -1,0 +1,61 @@
+= StatefulLink
+
+ActionLink is a helper that simplifies displaying stateful navigation links. State
+depends on current controller and action.
+
+= Installation
+
+gem 'stateful_link', :git => git://github.com/gzigzigzeo/stateful_link.git
+
+= Examples
+
+Let we have RESTful PostsController and two navigation links in layout.
+
+  layouts/application.html.erb
+    <ul>
+      <li>
+        <%= link_to "Posts", posts_url %>
+        <ul>
+          <li><%= link_to "New post", new_post_url %></li>
+        </ul>
+      </li>
+    </ul>
+
+So, at every page we have same links. But in good form we should mark
+current user location by changing visual appearance of current and parent navigation
+links. For example, if user opens new post page, "New post" should be displayed
+as regular text, and "Posts" should become bold.
+
+Solution:
+
+  posts_controller.rb
+
+    class PostsController < ApplicationController
+    end
+
+  application_helper.rb
+
+    module ApplicationHelper
+      def navigation_link(label, active, chosen, url)
+        stateful_link(
+          active, 
+          chosen,
+          :active => proc { label ),
+          :chosen => proc { content_tag :b, link_to(label, url) },
+          :inactive => proc { link_to label, url }
+        )
+      end
+    end
+
+  layouts/application.html.erb
+
+    <ul>
+      <li>
+        <%= navigation_link("Posts", "posts/index", "posts/*", posts_url) %>
+        <ul>
+          <%= navigation_link("New post", ["posts/new", "posts/create"], nil, new_post_url) %>
+        </ul>
+      </li>
+    </ul>
+
+See docs for details.
