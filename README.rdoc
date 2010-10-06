@@ -1,11 +1,11 @@
 = StatefulLink
 
-ActionLink is a helper that simplifies displaying stateful navigation links. State
+StatefulLink is a helper that simplifies displaying stateful navigation links. State
 depends on current controller and action.
 
 = Installation
 
-gem 'stateful_link', :git => git://github.com/gzigzigzeo/stateful_link.git
+gem 'stateful_link', :git => 'git://github.com/gzigzigzeo/stateful_link.git'
 
 = Examples
 
