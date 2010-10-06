@@ -53,9 +53,9 @@ module StatefulLink
     #
     # Examples:
     #
-    #   extract_controller_and_action("posts/index")       # ["posts", "index"]
-    #   extract_controller_and_action("admin/posts/index") # ["admin/posts", "index"]
-    #   extract_controller_and_action("admin/posts/index") # raises ArgumentError
+    #   extract_controller_and_action("posts#index")       # ["posts", "index"]
+    #   extract_controller_and_action("admin/posts#index") # ["admin/posts", "index"]
+    #   extract_controller_and_action("admin/posts#index") # raises ArgumentError
     #
     def extract_controller_and_action(ca)
       raise ArgumentError, "Pass the string" if ca.nil?

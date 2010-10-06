@@ -5,6 +5,11 @@ describe StatefulLink::Helper do
     controller.controller_path = 'foos'
     controller.action_name = 'bar'    
   end
+
+  it "should extract controller and action" do
+    helper.extract_controller_and_action("friendships#index").should == ['friendships', 'index']
+    helper.extract_controller_and_action("friendships#").should == ['friendships', '']    
+  end
   
   it "action_any_of should work" do
     helper.action_any_of?("bars#index").should be_false
