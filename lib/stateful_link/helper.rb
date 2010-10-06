@@ -4,18 +4,18 @@ module StatefulLink
     # Asterik as action name matches all controller's action.
     #
     # Examples:
-    #   <%= "we are in PostsController::index" if action_any_of?("posts/index") %>
+    #   <%= "we are in PostsController::index" if action_any_of?("posts#index") %>
     #
-    #   <%= "we are not in PostsController::index" unless action_any_of?("posts/index") %>
+    #   <%= "we are not in PostsController::index" unless action_any_of?("posts#index") %>
     #
-    #   <% if action_any_of?("posts/index", "messages/index") %>
+    #   <% if action_any_of?("posts#index", "messages#index") %>
     #     we are in PostsController or in MessagesController
     #   <% end %>
     #
     def action_any_of?(*actions)
       actions.any? do |sub_ca|
         sub_controller, sub_action = extract_controller_and_action(sub_ca)
-        controller.controller_path == sub_controller && (controller.action_name == sub_action || sub_action == '*')
+        controller.controller_path == sub_controller && (controller.action_name == sub_action || sub_action == '')
       end
     end
 
@@ -25,14 +25,14 @@ module StatefulLink
     # Examples:
     #   # :active for PostsController::index, :chosen for PostsController::* (except :index), 
     #   # :inactive otherwise.
-    #   action_state("posts/index", "posts/*")
+    #   action_state("posts#index", "posts#")
     #   
     #   # :active for PostsController::new and PostsController::create, :inactive otherwise.
-    #   action_state(["posts/new", "posts/create"])
+    #   action_state(["posts#new", "posts#create"])
     #
     #   # :active for PostsController::index, :chosen for MessagesController::* and
     #   # PostsController::* (except :index), :inactive otherwise.
-    #   action_state("posts/index", ["posts/*", "messages/*"])
+    #   action_state("posts#index", ["posts#", "messages#"])
     #
     def action_state(active, chosen = nil)
       active = active.is_a?(String) ? [active] : active
@@ -59,11 +59,11 @@ module StatefulLink
     #
     def extract_controller_and_action(ca)
       raise ArgumentError, "Pass the string" if ca.nil?
-      slash_pos = ca.rindex('/')
+      slash_pos = ca.rindex('#')
       raise ArgumentError, "Invalid action: #{ca}" if slash_pos.nil?
       controller = ca[0, slash_pos]
-      action = ca[slash_pos+1..-1]
-      raise ArgumentError, "Invalid action or controller" if action.nil? or controller.nil?
+      action = ca[slash_pos+1..-1] || ""
+      raise ArgumentError, "Invalid action or controller" if controller.nil?
 
       [controller, action]
     end
@@ -79,7 +79,7 @@ module StatefulLink
     # Any option may be proc.
     #
     # Example:
-    #  stateful_link_to("foos/index", "bars/index", 
+    #  stateful_link_to("foos#index", "bars#index", 
     #    :active => "<li class='active'>Good!</li>", 
     #    :chosen => "<li class='chosen'>#{link_to(...)}</li>"
     #  )
