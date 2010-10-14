@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Victor Sokolov"]
-  s.date = %q{2010-10-06}
+  s.date = %q{2010-10-14}
   s.description = %q{Helper to generate stateful navigation links.}
   s.email = %q{gzigzigzeo@gmail.com}
   s.extra_rdoc_files = [
@@ -25,10 +25,29 @@ Gem::Specification.new do |s|
      "lib/stateful_link/helper.rb",
      "lib/stateful_link/railtie.rb"
   ]
+  s.homepage = %q{http://github.com/gzigzigzeo/stateful_link}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Helper to generate stateful navigation links.}
+  s.test_files = [
+    "spec/dummy/app/controllers/application_controller.rb",
+     "spec/dummy/app/helpers/application_helper.rb",
+     "spec/dummy/config/application.rb",
+     "spec/dummy/config/boot.rb",
+     "spec/dummy/config/environment.rb",
+     "spec/dummy/config/environments/development.rb",
+     "spec/dummy/config/environments/production.rb",
+     "spec/dummy/config/environments/test.rb",
+     "spec/dummy/config/initializers/backtrace_silencers.rb",
+     "spec/dummy/config/initializers/inflections.rb",
+     "spec/dummy/config/initializers/mime_types.rb",
+     "spec/dummy/config/initializers/secret_token.rb",
+     "spec/dummy/config/initializers/session_store.rb",
+     "spec/dummy/config/routes.rb",
+     "spec/helpers/stateful_link_spec.rb",
+     "spec/spec_helper.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION

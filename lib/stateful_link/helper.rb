@@ -91,6 +91,8 @@ module StatefulLink
       state = options[:state] || proc { action_state(active, chosen) }
       raise ArgumentError, ":state should be proc" unless state.is_a?(Proc)
       state = instance_exec(&state)
+      state = :active if state == true
+      state = :inactive if state == false
       current = options[state]
       current.is_a?(Proc) ? instance_exec(&current) : current
     end
