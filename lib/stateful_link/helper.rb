@@ -15,7 +15,7 @@ module StatefulLink
     def action_any_of?(*actions)
       actions.any? do |sub_ca|
         sub_controller, sub_action = extract_controller_and_action(sub_ca)
-        controller.controller_path == sub_controller && (controller.action_name == sub_action || sub_action == '')
+        controller.controller_path == sub_controller && (controller.action_name == sub_action || (sub_action == '' || sub_action == '*'))
       end
     end
 
@@ -40,12 +40,10 @@ module StatefulLink
 
       if action_any_of?(*active)
         :active
+      elsif !chosen.nil? && action_any_of?(*chosen) 
+        :chosen
       else
-        if !chosen.nil? && action_any_of?(*chosen) 
-          :chosen
-        else
-          :inactive    
-        end    
+        :inactive    
       end
     end
  

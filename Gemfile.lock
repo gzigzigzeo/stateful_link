@@ -114,7 +114,8 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (>= 0.3.9)
-  rails (~> 3)
+  childprocess
+  rails (>= 3)
   rspec-rails (>= 2.0.0.beta)
   ruby-debug (>= 0.10.3)
   sqlite3-ruby
