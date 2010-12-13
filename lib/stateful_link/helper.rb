@@ -14,8 +14,10 @@ module StatefulLink
     #
     def action_any_of?(*actions)
       actions.any? do |sub_ca|
-        sub_controller, sub_action = extract_controller_and_action(sub_ca)
-        controller.controller_path == sub_controller && (controller.action_name == sub_action || (sub_action == '' || sub_action == '*'))
+        unless sub_ca.empty?
+          sub_controller, sub_action = extract_controller_and_action(sub_ca)
+          controller.controller_path == sub_controller && (controller.action_name == sub_action || (sub_action == '' || sub_action == '*'))
+        end
       end
     end
 
