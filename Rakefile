@@ -18,7 +18,7 @@ begin
     gem.authors = ["Victor Sokolov"]
     gem.homepage = "http://github.com/gzigzigzeo/stateful_link"
             
-    gem.add_dependency "rails", "~> 3.0.0"    
+    gem.add_dependency "rails", ">= 3.0.0"    
   end
   
   Jeweler::GemcutterTasks.new

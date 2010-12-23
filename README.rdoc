@@ -42,7 +42,7 @@ Solution:
         stateful_link(
           active, 
           chosen,
-          :active => proc { label ),
+          :active => proc { label },
           :chosen => proc { content_tag :b, link_to(label, url) },
           :inactive => proc { link_to label, url }
         )
@@ -53,9 +53,9 @@ Solution:
 
     <ul>
       <li>
-        <%= navigation_link("Posts", "posts/index", "posts/*", posts_url) %>
+        <%= navigation_link("Posts", "posts#index", "posts#*", posts_url) %>
         <ul>
-          <%= navigation_link("New post", ["posts/new", "posts/create"], nil, new_post_url) %>
+          <%= navigation_link("New post", ["posts#new", "posts#create"], nil, new_post_url) %>
         </ul>
       </li>
     </ul>
