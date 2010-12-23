@@ -3,11 +3,13 @@
 StatefulLink is a helper that simplifies displaying stateful navigation links. State
 depends on current controller and action.
 
-= Installation
+== Installation
 
-gem 'stateful_link', :git => 'git://github.com/gzigzigzeo/stateful_link.git'
+Rails3 only Add the following line to your Gemfile:
 
-= Examples
+  gem 'stateful_link'
+
+== Examples
 
 Let we have RESTful PostsController and two navigation links in layout.
 
