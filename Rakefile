@@ -3,7 +3,7 @@ require 'rake'
 require 'rspec/core'
 require 'rspec/core/rake_task'
 
-Rspec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new(:spec)
 task :default => :spec
 
 begin
@@ -13,7 +13,7 @@ begin
     gem.summary = "Helper to generate stateful navigation links."
     gem.description = "Helper to generate stateful navigation links."
     gem.files =  FileList["[A-Z]*", "lib/**/*"]
-    gem.version = "0.0.1"
+    gem.version = "0.0.2"
     gem.email = "gzigzigzeo@gmail.com"
     gem.authors = ["Victor Sokolov"]
     gem.homepage = "http://github.com/gzigzigzeo/stateful_link"
