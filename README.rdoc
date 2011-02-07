@@ -39,7 +39,7 @@ Solution:
 
     module ApplicationHelper
       def navigation_link(label, active, chosen, url)
-        stateful_link(
+        stateful_link_to(
           active, 
           chosen,
           :active => proc { label },
