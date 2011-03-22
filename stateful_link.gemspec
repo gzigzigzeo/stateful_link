@@ -3,15 +3,14 @@ $:.push File.expand_path("../lib", __FILE__)
 require "stateful_link/version"
 
 Gem::Specification.new do |s|
-  s.name = "stateful_link"
+  s.name        = "stateful_link"
   s.version     = StatefulLink::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.summary = "Helper to generate stateful navigation links."
+  s.summary     = "Helper to generate stateful navigation links."
   s.description = "Helper to generate stateful navigation links."
-  s.email = "gzigzigzeo@gmail.com"
-  s.authors = ["Victor Sokolov"]
-  s.homepage = "http://github.com/gzigzigzeo/stateful_link"
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.email       = "gzigzigzeo@gmail.com"
+  s.author      = "Victor Sokolov"
+  s.homepage    = "http://github.com/gzigzigzeo/stateful_link"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
