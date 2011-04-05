@@ -9,7 +9,7 @@ Rails3 only Add the following line to your Gemfile:
 
   gem 'stateful_link'
 
-== Examples
+== Tutorial
 
 Let we have RESTful PostsController and two navigation links in layout.
 
@@ -60,4 +60,12 @@ Solution:
       </li>
     </ul>
 
-See docs for details.
+== Examples
+
+  posts/index.html.erb
+  
+  <%= "we are in PostsController::index" if action_any_of?("posts#index") %>
+  <%= "we are in PostsController::index" if action_any_of?("#index") %>
+  <%= "action state is active" if action_state("#index") == :active %>
+  <%= "action state is chosen" if action_state("#show", ["#index", "#edit", "#update"]) == :chosen %>
+  <%= "action state is inactive" if action_state("users#index") == :inactive %>

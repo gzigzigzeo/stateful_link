@@ -23,7 +23,7 @@ module StatefulLink
         actions.any? do |sub_ca|
           unless sub_ca.empty?
             sub_controller, sub_action = extract_controller_and_action(sub_ca)
-            self.controller_path == sub_controller && (self.action_name == sub_action || (sub_action == '' || sub_action == '*'))
+            ((self.controller_path == sub_controller) || (sub_controller.blank?)) && (self.action_name == sub_action || (sub_action == '' || sub_action == '*'))
           end
         end
       end
@@ -42,7 +42,7 @@ module StatefulLink
         raise ArgumentError, "Invalid action: #{ca}" if slash_pos.nil?
         controller = ca[0, slash_pos]
         action = ca[slash_pos+1..-1] || ""
-        raise ArgumentError, "Invalid action or controller" if controller.nil?
+        raise ArgumentError, "Invalid action or controller" if action.nil?
 
         [controller, action]
       end        
