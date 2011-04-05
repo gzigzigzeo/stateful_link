@@ -3,13 +3,13 @@
 StatefulLink is a helper that simplifies displaying stateful navigation links. State
 depends on current controller and action.
 
-== Installation
+= Installation
 
 Rails3 only Add the following line to your Gemfile:
 
   gem 'stateful_link'
 
-== Tutorial
+= Tutorial
 
 Let we have RESTful PostsController and two navigation links in layout.
 
@@ -60,7 +60,7 @@ Solution:
       </li>
     </ul>
 
-== Examples
+= Examples
 
   posts/index.html.erb
   
