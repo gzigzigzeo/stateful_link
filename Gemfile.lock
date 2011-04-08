@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    stateful_link (0.0.6)
+    stateful_link (0.0.7)
       rails (>= 3)
 
 GEM
