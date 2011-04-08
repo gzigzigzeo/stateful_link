@@ -3,10 +3,10 @@ module StatefulLink
     # Generates stateful link to something.
     # 
     # Options:
-    #    :inactive - template of inactive state
-    #    :active - template of active state
-    #    :chosen - template of chosen state
-    #    :state - block to determine state (action_state called if none)
+    #    :inactive - template of inactive state (block or string).
+    #    :active - template of active state.
+    #    :chosen - template of chosen state.
+    #    :state - state (action_state called if none) - block, symbol or boolean
     #
     # Any option may be proc.
     #
@@ -21,7 +21,7 @@ module StatefulLink
       active = args.first
       chosen = args.second
       state = options[:state] || proc { action_state(active, chosen) }
-      state = instance_exec(&state)
+      state = state.is_a?(Proc) ? instance_exec(&state) : state
       state = :active if state == true
       state = :inactive if state == false
       current = options[state]
