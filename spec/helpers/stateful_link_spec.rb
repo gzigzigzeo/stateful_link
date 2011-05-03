@@ -45,5 +45,21 @@ describe StatefulLink::Helper do
       :chosen => "3",
       :state => proc { false }
     ).should == "2"
+
+    helper.stub(:action_state) { :chosen }
+
+    helper.stateful_link_to(
+      :active => "1",
+      :inactive => "2",
+      :chosen => "3",
+      :state => false
+    ).should == "2"
+
+    helper.stateful_link_to(
+      :active => "1",
+      :inactive => "2",
+      :chosen => "3",
+      :state => true
+    ).should == "1"
   end
 end

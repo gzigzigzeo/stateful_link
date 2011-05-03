@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    stateful_link (0.0.7)
+    stateful_link (0.0.8)
       rails (>= 3)
 
 GEM
@@ -56,7 +56,7 @@ GEM
       rake (>= 0.8.7)
     i18n (0.5.0)
     json_pure (1.5.1)
-    mail (2.2.15)
+    mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)

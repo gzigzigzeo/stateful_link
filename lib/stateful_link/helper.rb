@@ -20,7 +20,8 @@ module StatefulLink
       options = args.extract_options!
       active = args.first
       chosen = args.second
-      state = options[:state] || proc { action_state(active, chosen) }
+      state = options[:state]
+      state = proc { action_state(active, chosen) } if state.nil?
       state = state.is_a?(Proc) ? instance_exec(&state) : state
       state = :active if state == true
       state = :inactive if state == false
