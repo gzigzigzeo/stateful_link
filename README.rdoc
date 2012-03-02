@@ -1,15 +1,14 @@
 = StatefulLink
 
-StatefulLink is a helper that simplifies displaying stateful navigation links. State
-depends on current controller and action.
+StatefulLink is a helper that simplifies displaying stateful navigation links. 
 
 = Installation
 
-Rails3 only Add the following line to your Gemfile:
+Rails 3 only. Add the following line to your Gemfile:
 
   gem 'stateful_link'
 
-= Tutorial
+= Problem
 
 Let we have RESTful PostsController and two navigation links in layout.
 
@@ -28,11 +27,12 @@ current user location by changing visual appearance of current and parent naviga
 links. For example, if user opens new post page, "New post" should be displayed
 as regular text, and "Posts" should become bold.
 
-Solution:
+= Solution
 
   posts_controller.rb
 
     class PostsController < ApplicationController
+      ...
     end
 
   application_helper.rb
@@ -40,11 +40,18 @@ Solution:
     module ApplicationHelper
       def navigation_link(label, active, chosen, url)
         stateful_link_to(
-          active, 
-          chosen,
           :active => proc { label },
           :chosen => proc { content_tag :b, link_to(label, url) },
-          :inactive => proc { link_to label, url }
+          :inactive => proc { link_to label, url },
+          :state => proc {
+            if action_any_of?(active) # See below
+              :active
+            elsif action_any_of?(chosen)
+              :chosen
+            else
+              :inactive
+            end
+          }
         )
       end
     end
